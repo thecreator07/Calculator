@@ -1,15 +1,28 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+}
+
 #cal-body {
-    width: 400px;
+    width: 360px;
     border-radius: 20px;
     background: #dde1e7;
     box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
     padding: 45px;
-    scale: 0.6;
+    scale: 0.8;
   }
   
   .input input {
     height: 100px;
-    width: 85%;
+    width: 100%;
     border-radius: 10px;
     background: #dde1e7;
     box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);

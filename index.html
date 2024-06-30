@@ -10,6 +10,7 @@
 
 <body>
     <div id="cal-body">
+        <h1 style="padding: 4px; text-align: center;">calculator</h1>
         <div class="input">
             <input type="text" id="result" readonly>
         </div>
@@ -40,35 +41,35 @@
             </div>
         </div>
     </div>
-    <script>
-        const resultInput = document.getElementById('result');
-        let currentInput = '';
+</body>
+<script>
+    const resultInput = document.getElementById('result');
+    let currentInput = '';
 
-        function appendNumber(num) {
-            currentInput += num;
+    function appendNumber(num) {
+        currentInput += num;
+        resultInput.value = currentInput;
+    }
+
+    function appendOperator(operator) {
+        if (currentInput !== '' && !isNaN(currentInput[currentInput.length - 1])) {
+            currentInput += operator;
             resultInput.value = currentInput;
         }
+    }
 
-        function appendOperator(operator) {
-            if (currentInput !== '' && !isNaN(currentInput[currentInput.length - 1])) {
-                currentInput += operator;
-                resultInput.value = currentInput;
+    function calculate() {
+        if (currentInput !== '' && !isNaN(currentInput[currentInput.length - 1])) {
+            try {
+                const result = eval(currentInput);
+                resultInput.value = result;
+                currentInput = result.toString();
+            } catch (error) {
+                resultInput.value = 'Error';
+                currentInput = '';
             }
         }
-
-        function calculate() {
-            if (currentInput !== '' && !isNaN(currentInput[currentInput.length - 1])) {
-                try {
-                    const result = eval(currentInput);
-                    resultInput.value = result;
-                    currentInput = result.toString();
-                } catch (error) {
-                    resultInput.value = 'Error';
-                    currentInput = '';
-                }
-            }
-        }
-    </script>
-</body>
+    }
+</script>
 
 </html>
