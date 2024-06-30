@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="cal-body">
+        <div class="input">
+            <input type="text" id="result" readonly>
+        </div>
+        <div style="padding-top: 40px;">
+            <div class="buttons">
+                <button onclick="appendNumber('1')">1</button>
+                <button onclick="appendNumber('2')">2</button>
+                <button onclick="appendNumber('3')">3</button>
+                <button onclick="appendOperator('+')">+</button>
+            </div>
+            <div class="buttons">
+                <button onclick="appendNumber('4')">4</button>
+                <button onclick="appendNumber('5')">5</button>
+                <button onclick="appendNumber('6')">6</button>
+                <button onclick="appendOperator('-')">-</button>
+            </div>
+            <div class="buttons">
+                <button onclick="appendNumber('7')">7</button>
+                <button onclick="appendNumber('8')">8</button>
+                <button onclick="appendNumber('9')">9</button>
+                <button onclick="appendOperator('*')">*</button>
+            </div>
+            <div class="buttons">
+                <button onclick="appendNumber('.')">.</button>
+                <button onclick="appendNumber('0')">0</button>
+                <button onclick="calculate()">=</button>
+                <button onclick="appendOperator('/')">/</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const resultInput = document.getElementById('result');
+        let currentInput = '';
+
+        function appendNumber(num) {
+            currentInput += num;
+            resultInput.value = currentInput;
+        }
+
+        function appendOperator(operator) {
+            if (currentInput !== '' && !isNaN(currentInput[currentInput.length - 1])) {
+                currentInput += operator;
+                resultInput.value = currentInput;
+            }
+        }
+
+        function calculate() {
+            if (currentInput !== '' && !isNaN(currentInput[currentInput.length - 1])) {
+                try {
+                    const result = eval(currentInput);
+                    resultInput.value = result;
+                    currentInput = result.toString();
+                } catch (error) {
+                    resultInput.value = 'Error';
+                    currentInput = '';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
